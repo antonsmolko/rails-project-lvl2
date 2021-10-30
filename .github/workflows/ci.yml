@@ -22,10 +22,10 @@ jobs:
         with:
           ruby-version: 3.0.2
           bundler-cache: true
+      - run: make ci-setup
+      - run: make test
       - name: Rubocop Linter Action
         uses: andrewmcodes/rubocop-linter-action@v3.0.0.rc2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: make ci-setup
-      - run: make test

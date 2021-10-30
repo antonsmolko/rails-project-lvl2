@@ -8,10 +8,11 @@ DEFAULTS: &DEFAULTS
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 one:
-  <<: *DEFAULTS
+  id: 1
   email: $LABEL@email.com
+  <<: *DEFAULTS
 
 two:
-  <<: *DEFAULTS
+  id: 2
   email: $LABEL@email.com
-# column: value
+  <<: *DEFAULTS

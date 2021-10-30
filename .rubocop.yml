@@ -36,3 +36,6 @@ Metrics/BlockLength:
 
 Style/AsciiComments:
   Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false

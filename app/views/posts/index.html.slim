@@ -1,0 +1,22 @@
+.d-flex.align-items-center.justify-content-between
+  h1.m-0 Posts
+  div
+    = link_to 'Create post', new_post_path, class: 'btn btn-primary'
+table.table.table-striped.table-hover.mt-5
+  thead
+    tr
+      th[scope="col"] #
+      th[scope="col"] Title
+      th[scope="col"] Category
+      th[scope="col"] Creator
+      th.text-end[scope="col"] Actions
+  tbody
+    - @posts.each do |post|
+      tr
+        td= post.id
+        td= link_to post.title, post_path(post)
+        td: .badge.bg-secondary= post.post_category.name
+        td= post.creator.email
+        td.text-end
+          = link_to 'Edit', edit_post_path(post), class: 'btn btn-sm btn-success me-1'
+          = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are your sure?' }, class: 'btn btn-sm btn-danger'

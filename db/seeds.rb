@@ -7,6 +7,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
 post_categories = %w[Education Gadgets Health Nature Science Sports Travel]
 post_categories.each { |category| PostCategory.create(name: category) }
+user = User.create(email: 'asmolko@yandex.ru', password: 'nnnnnnn')
+
+10.times do
+  Post.create(
+    title: Faker::Movies::VForVendetta.character,
+    body: Faker::Lorem.paragraph,
+    post_category_id: PostCategory.all.sample.id,
+    creator_id: user.id
+  )
+end

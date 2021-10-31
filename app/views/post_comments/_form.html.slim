@@ -1,0 +1,6 @@
+= simple_form_for post_comment, local: true, url: url, parent_id: nil do |f|
+  = f.input :content, as: :text, label: 'Комментарий', wrapper_html: { class: 'mb-3' }
+  = f.hidden_field :parent_id, { value: parent_id }
+
+  .mt-2
+    = f.submit 'Создать комментарий', class: 'btn btn-primary btn-sm'

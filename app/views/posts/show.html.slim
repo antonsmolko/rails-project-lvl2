@@ -1,15 +1,36 @@
+nav[aria-label="breadcrumb"]
+  ol.breadcrumb
+    li.breadcrumb-item
+      = link_to 'Все статьи', root_path
+    li.breadcrumb-item.active[aria-current="page"]= @post.post_category.name
+
 .mb-5
   h1.mb-2= @post.title
-  .badge.bg-secondary
-    = @post.post_category.name
 
-p= @post.body
+div= @post.body
+
+.lead.my-5= @post.creator.email
+
 hr
-dl.d-flex
-  dt.me-2 Creator:
-  dd.mb-0= @post.creator.email
 
-.mt-5
-  = link_to 'Back', posts_path, class: 'btn btn-primary me-1'
-  = link_to 'Edit', edit_post_path(@post), class: 'btn btn-success me-1'
-  = link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are your sure?' }, class: 'btn btn-danger'
+= render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: nil
+
+.row.gap-3.mt-5
+  - @post.post_comments.roots.each do |post_comment|
+    .col-12: .card
+      .card-header= post_comment.user.email
+      .card-body
+        = post_comment.content
+        - if post_comment.has_children?
+          .small
+            - post_comment.children.each do |comment|
+              = render 'post_comments/children',
+                      new_comment: @post_comment,
+                      comment: comment,
+                      url: post_comments_path(@post)
+      hr.my-0
+      .m-3
+        a.d-block.small.text-muted.mb-1[data-bs-toggle="collapse" href="#new-post-comment-#{post_comment.id}"]
+          | Ответить
+        .collapse[data-bs-target="#new-post-comment-#{post_comment.id}" id="new-post-comment-#{post_comment.id}"]
+          = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: post_comment.id

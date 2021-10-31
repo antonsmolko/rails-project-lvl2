@@ -1,22 +1,15 @@
-.d-flex.align-items-center.justify-content-between
-  h1.m-0 Posts
+.d-flex.align-items-center.justify-content-between.mb-5
+  h1 Коллективный блог
   div
     = link_to 'Create post', new_post_path, class: 'btn btn-primary'
-table.table.table-striped.table-hover.mt-5
-  thead
-    tr
-      th[scope="col"] #
-      th[scope="col"] Title
-      th[scope="col"] Category
-      th[scope="col"] Creator
-      th.text-end[scope="col"] Actions
-  tbody
-    - @posts.each do |post|
-      tr
-        td= post.id
-        td= link_to post.title, post_path(post)
-        td: .badge.bg-secondary= post.post_category.name
-        td= post.creator.email
-        td.text-end
-          = link_to 'Edit', edit_post_path(post), class: 'btn btn-sm btn-success me-1'
-          = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are your sure?' }, class: 'btn btn-sm btn-danger'
+
+.row.gap-4
+  - @posts.each do |post|
+    .col-12: .card: .card-body
+      h2.card-title.h-5= post.title
+      .card-text.mb-2= post.body
+      .row.text-muted
+        .col-12.col-sm-auto Понравилось: 0
+        .col-12.col-sm-auto 3 дня
+        .col-12.col-sm-auto= post.creator.email
+        .col-12.col-sm-auto.flex-grow-1.text-end= link_to 'Подробнее', post_path(post), class: 'stretched-link'

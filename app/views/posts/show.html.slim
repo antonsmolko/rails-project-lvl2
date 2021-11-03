@@ -9,11 +9,23 @@ nav[aria-label="breadcrumb"]
 
 div= @post.body
 
-.lead.my-5= @post.creator.email
+.d-flex.justify-content-between.mt-5
+  div
+    span.lead.me-2= @post.creator.email
+    span 4 дня
+  div
+    span.me-2= @post.post_likes.size
+    - @post_like = current_user.post_likes.find_by(post_id: @post.id)
+    - if @post_like
+      = link_to post_post_like_path(@post, @post_like), method: :delete do
+        i.fas.fa-thumbs-up
+    - else
+      = link_to post_post_likes_path(@post), method: :post do
+        i.far.fa-thumbs-up
 
 hr
 
-= render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: nil
+= render 'post_comments/form', post_comment: @post_comment, url: post_post_comments_path(@post), parent_id: nil
 
 .row.gap-3.mt-5
   - @post.post_comments.roots.each do |post_comment|
@@ -27,10 +39,10 @@ hr
               = render 'post_comments/children',
                       new_comment: @post_comment,
                       comment: comment,
-                      url: post_comments_path(@post)
+                      url: post_post_comments_path(@post)
       hr.my-0
       .m-3
         a.d-block.small.text-muted.mb-1[data-bs-toggle="collapse" href="#new-post-comment-#{post_comment.id}"]
           | Ответить
         .collapse[data-bs-target="#new-post-comment-#{post_comment.id}" id="new-post-comment-#{post_comment.id}"]
-          = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: post_comment.id
+          = render 'post_comments/form', post_comment: @post_comment, url: post_post_comments_path(@post), parent_id: post_comment.id

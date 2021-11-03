@@ -14,3 +14,12 @@ ActiveStorage.start()
 
 import "bootstrap/dist/js/bootstrap.bundle.min"
 import "../../assets/stylesheets/application.css"
+
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp as farThumbsUp } from '@fortawesome/free-regular-svg-icons'
+
+library.add(faThumbsUp)
+library.add(farThumbsUp)
+
+dom.watch()

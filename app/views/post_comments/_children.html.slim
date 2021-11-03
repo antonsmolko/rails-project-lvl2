@@ -8,8 +8,8 @@ hr.my-2
     a.d-block.small.text-muted.mb-1[data-bs-toggle="collapse" href="#new-post-comment-#{comment.id}"]
       | Ответить
     .collapse[data-bs-target="#new-post-comment-#{comment.id}" id="new-post-comment-#{comment.id}"]
-      = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: comment.id
+      = render 'post_comments/form', post_comment: @post_comment, url: post_post_comments_path(@post), parent_id: comment.id
     - if comment.has_children?
       .ms-4
         - comment.children.each do |children_comment|
-          = render 'post_comments/children', new_comment: @post_comment, comment: children_comment, url: post_comments_path(@post)
+          = render 'post_comments/children', new_comment: @post_comment, comment: children_comment, url: post_post_comments_path(@post)

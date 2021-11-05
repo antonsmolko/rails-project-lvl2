@@ -13,11 +13,11 @@ post_categories = %w[Education Gadgets Health Nature Science Sports Travel]
 post_categories.each { |category| PostCategory.create(name: category) }
 User.create(email: 'asmolko@yandex.ru', password: 'nnnnnnn')
 
-10.times do
-  Post.create(
-    title: Faker::Movies::VForVendetta.character,
-    body: Faker::Lorem.paragraph(sentence_count: 5),
-    post_category_id: PostCategory.all.sample.id,
-    creator_id: user.id
-  )
-end
+# 10.times do
+#   Post.create(
+#     title: Faker::Movies::VForVendetta.character,
+#     body: Faker::Lorem.paragraph(sentence_count: 5),
+#     post_category_id: PostCategory.all.sample.id,
+#     creator_id: user.id
+#   )
+# end

@@ -3,3 +3,12 @@
 [![CI](https://github.com/antonsmolko/rails-project-lvl2/actions/workflows/ci.yml/badge.svg)](https://github.com/antonsmolko/rails-project-lvl2/actions/workflows/ci.yml)
 
 [Demo](https://antonsmolko-rails-project-lvl2.herokuapp.com)
+
+## Installation
+    $ bundle
+    $ yarn install
+    $ rails db:migrate
+    $ rails db:seed
+
+## Usage
+    $ rails s

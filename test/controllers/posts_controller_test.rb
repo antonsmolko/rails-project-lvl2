@@ -9,8 +9,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
 
     @attrs = {
-      title: 'Test title',
-      body: 'Test body text',
+      title: Faker::Movies::VForVendetta.character,
+      body: Faker::Movies::VForVendetta.speech,
       post_category_id: 1,
       creator_id: 2
     }
@@ -30,9 +30,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create post' do
     post posts_url, params: { post: @attrs }
-
     post = Post.find_by! title: @attrs[:title]
-
     assert_redirected_to post_url(post)
   end
 

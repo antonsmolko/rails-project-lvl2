@@ -1,7 +1,8 @@
 .d-flex.align-items-center.justify-content-between.mb-5
-  h1 Коллективный блог
-  div
-    = link_to 'Create post', new_post_path, class: 'btn btn-primary'
+  h1 Collective blog
+  - if user_signed_in?
+    div
+      = link_to 'Create post', new_post_path, class: 'btn btn-primary'
 
 .row.gap-4
   - @posts.each do |post|
@@ -9,7 +10,7 @@
       h2.card-title.h-5= post.title
       .card-text.mb-2= post.body
       .row.text-muted
-        .col-12.col-sm-auto Понравилось: 0
-        .col-12.col-sm-auto 3 дня
+        .col-12.col-sm-auto Liked: #{post.post_likes.size}
+        .col-12.col-sm-auto= distance_of_time_in_words(post.created_at, Time.now)
         .col-12.col-sm-auto= post.creator.email
-        .col-12.col-sm-auto.flex-grow-1.text-end= link_to 'Подробнее', post_path(post), class: 'stretched-link'
+        .col-12.col-sm-auto.flex-grow-1.text-end= link_to 'Read more', post_path(post), class: 'stretched-link'

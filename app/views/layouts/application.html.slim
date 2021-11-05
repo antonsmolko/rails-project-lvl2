@@ -10,7 +10,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      = render 'layouts/navigation'
+      = render 'layouts/shared/navigation'
+    = render 'layouts/shared/flash'
     main.my-5[role="main"]
       .container
         = content_for?(:content) ? yield(:content) : yield

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PostLikesController < ApplicationController
-  before_action :get_post
+  before_action :find_post
 
   def create
     @post_like = PostLike.new(post_id: params[:post_id], user_id: current_user.id)
@@ -15,7 +17,7 @@ class PostLikesController < ApplicationController
 
   private
 
-  def get_post
+  def find_post
     @post = Post.find(params[:post_id])
   end
 end

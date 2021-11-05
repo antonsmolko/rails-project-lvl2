@@ -1,14 +1,14 @@
 .d-flex.align-items-center
   span.me-2.text-secondary
     = @post.post_likes.size
-  - case
-  - when !user_signed_in?
-    = link_to new_user_session_path, class: 'link-secondary' do
-      i.far.fa-thumbs-up
-  - when @post_like
+  - if user_signed_in?
     - @post_like = current_user.post_likes.find_by(post_id: @post.id)
-    = link_to post_post_like_path(@post, @post_like), method: :delete, class: 'link-secondary' do
-      i.fas.fa-thumbs-up
+    - if @post_like
+      = link_to post_like_path(@post_like), method: :delete, class: 'link-secondary' do
+        i.fas.fa-thumbs-up
+    - else
+      = link_to post_likes_path(@post), method: :post, class: 'link-secondary' do
+        i.far.fa-thumbs-up
   - else
-    = link_to post_post_likes_path(@post), method: :post, class: 'link-secondary' do
+    = link_to new_user_session_path, class: 'link-secondary' do
       i.far.fa-thumbs-up

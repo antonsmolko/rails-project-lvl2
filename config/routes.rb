@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   root 'posts#index'
   resources :posts do
-    resources :post_comments
-    resources :post_likes, only: %w[create destroy]
+    member do
+      resources :post_comments, shallow: true
+      resources :post_likes, shallow: true, only: %w[create destroy]
+    end
   end
 end

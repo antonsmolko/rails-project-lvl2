@@ -17,7 +17,7 @@ div= @post.body
 hr
 
 - if user_signed_in?
-  = render 'post_comments/form', post_comment: @post_comment, url: post_post_comments_path(@post), parent_id: nil
+  = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: nil
 
 .row.gap-3.mt-5
   - @post.post_comments.roots.each do |post_comment|
@@ -31,14 +31,14 @@ hr
               = render 'post_comments/children',
                       new_comment: @post_comment,
                       comment: comment,
-                      url: post_post_comments_path(@post)
+                      url: post_comments_path(@post)
       hr.my-0
       .m-3
         a.d-block.small.text-muted.mb-1[data-bs-toggle="collapse" href="#new-post-comment-#{post_comment.id}"]
           | Comment on
         .collapse[data-bs-target="#new-post-comment-#{post_comment.id}" id="new-post-comment-#{post_comment.id}"]
           - if user_signed_in?
-            = render 'post_comments/form', post_comment: @post_comment, url: post_post_comments_path(@post), parent_id: post_comment.id
+            = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: post_comment.id
           - else
             | Requires&nbsp;
             = link_to 'Sign In', new_user_session_path

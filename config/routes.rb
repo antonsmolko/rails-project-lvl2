@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :posts do
     member do
       resources :post_comments, shallow: true
-      resources :post_likes, shallow: true, only: %w[create destroy]
+      resources :post_likes, only: %w[create]
+      delete 'post_likes', to: 'post_likes#destroy'
     end
   end
+  # delete 'posts/:id/post_likes', to: 'post_likes#destroy', as: 'post_like_destroy'
 end

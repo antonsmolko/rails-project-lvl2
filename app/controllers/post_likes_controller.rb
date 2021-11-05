@@ -9,7 +9,7 @@ class PostLikesController < ApplicationController
   end
 
   def destroy
-    @post_like = PostLike.find(params[:id])
+    @post_like = PostLike.find_by post_id: params[:id], user_id: current_user.id
     @post_like.destroy
 
     redirect_back(fallback_location: root_path)

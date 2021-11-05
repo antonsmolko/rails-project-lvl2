@@ -9,8 +9,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
 
     @attrs = {
-      title: Faker::Movies::VForVendetta.character,
-      body: Faker::Movies::VForVendetta.speech,
+      title: 'Test title',
+      body: 'Test body text',
       post_category_id: 1,
       creator_id: 2
     }

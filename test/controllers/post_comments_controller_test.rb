@@ -10,7 +10,7 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
     @post_comment = post_comments(:one)
 
     @attrs = {
-      content: Faker::Lorem.paragraph
+      content: 'Test comment text'
     }
 
     sign_in users(:one)

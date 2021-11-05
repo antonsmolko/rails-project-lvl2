@@ -30,7 +30,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create post' do
     post posts_url, params: { post: @attrs }
+
     post = Post.find_by! title: @attrs[:title]
+
     assert_redirected_to post_url(post)
   end
 

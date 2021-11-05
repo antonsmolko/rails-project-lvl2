@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :posts do
     member do
-      resources :post_comments, shallow: true
-      resource :post_likes, only: %w[create destroy]
+      resources :post_comments, only: %w[create new], shallow: true
+      resources :post_likes, only: %w[create destroy], shallow: true
     end
   end
 end

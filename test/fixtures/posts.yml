@@ -4,12 +4,12 @@ one:
   id: 1
   title: Test Title 1
   body: Test Body 1
-  post_category_id: 1
+  category_id: 1
   creator_id: 1
 
 two:
   id: 2
   title: Test Title 2
   body: Test Body 2
-  post_category_id: 2
+  category_id: 2
   creator_id: 2

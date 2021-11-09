@@ -2,7 +2,7 @@ nav[aria-label="breadcrumb"]
   ol.breadcrumb
     li.breadcrumb-item
       = link_to 'All posts', root_path
-    li.breadcrumb-item.active[aria-current="page"]= @post.post_category.name
+    li.breadcrumb-item.active[aria-current="page"]= @post.category.name
 
 .mb-5
   h1.mb-2= @post.title

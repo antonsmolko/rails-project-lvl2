@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post_categories = PostCategory.all
+    @post_categories = Post::Category.all
   end
 
   def create
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_comment = PostComment.new
+    @post_comment = Post::Comment.new
   end
 
   def edit
@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:post_category_id, :title, :body, :summary, :published)
+    params.require(:post).permit(:category_id, :title, :body, :summary, :published)
   end
 end

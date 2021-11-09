@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
-  has_many :comments, class_name: 'PostComment', dependent: :destroy
-  has_many :likes, class_name: 'PostLike', dependent: :destroy
+  has_many :comments, class_name: 'Post::Comment', dependent: :destroy
+  has_many :likes, class_name: 'Post::Like', dependent: :destroy
   has_many :liked_posts, through: :post_likes, source: :post
 end

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative '../test_helper'
+require_relative '../../test_helper'
 
-class PostCommentsControllerTest < ActionDispatch::IntegrationTest
+class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
     @post = posts(:one)
-    @post_comment = post_comments(:one)
+    @comment = post_comments(:one)
 
     @attrs = {
       content: Faker::Lorem.paragraph
@@ -19,14 +19,14 @@ class PostCommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create post_comment' do
     post post_comments_path(@post), params: { post_comment: @attrs.merge(parent_id: nil) }
 
-    post_comment = PostComment.find_by! content: @attrs[:content]
+    post_comment = Post::Comment.find_by! content: @attrs[:content]
     assert @post.comments.last.id == post_comment.id
   end
 
   test 'should create post_comment for parent' do
-    post post_comments_path(@post), params: { post_comment: @attrs.merge(parent_id: @post_comment.id) }
+    post post_comments_path(@post), params: { post_comment: @attrs.merge(parent_id: @comment.id) }
 
-    post_comment = PostComment.find_by! content: @attrs[:content]
-    assert post_comment.ancestry == @post_comment.id.to_s
+    post_comment = Post::Comment.find_by! content: @attrs[:content]
+    assert post_comment.ancestry == @comment.id.to_s
   end
 end

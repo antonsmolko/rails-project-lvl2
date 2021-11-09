@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../test_helper'
+require_relative '../../test_helper'
 
-class PostLikesControllerTest < ActionDispatch::IntegrationTest
+class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
@@ -13,10 +13,10 @@ class PostLikesControllerTest < ActionDispatch::IntegrationTest
   test 'should like/dislike post' do
     post post_likes_path(@post)
 
-    post_like = PostLike.find_by! post_id: @post.id
+    post_like = Post::Like.find_by! post_id: @post.id
     assert @post.likes.last.id == post_like.id
 
-    delete post_like_path post_like
+    delete like_path post_like
 
     assert_empty @post.likes
   end

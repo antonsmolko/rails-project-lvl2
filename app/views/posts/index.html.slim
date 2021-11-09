@@ -10,7 +10,7 @@
       h2.card-title.h-5= post.title
       .card-text.mb-2= post.body
       .row.text-muted
-        .col-12.col-sm-auto Liked: #{post.post_likes.size}
+        .col-12.col-sm-auto Liked: #{post.likes.size}
         .col-12.col-sm-auto= distance_of_time_in_words(post.created_at, Time.now)
         .col-12.col-sm-auto= post.creator.email
         .col-12.col-sm-auto.flex-grow-1.text-end= link_to 'Read more', post_path(post), class: 'stretched-link'

@@ -2,10 +2,10 @@
 
 one:
   content: MyText 1
-  user_id: 1
-  post_id: 1
+  user: one
+  post: one
 
 two:
   content: MyText 2
-  user_id: 2
-  post_id: 2
+  user: two
+  post: two

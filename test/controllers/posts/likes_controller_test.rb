@@ -7,10 +7,14 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @post = posts(:one)
-    sign_in users(:one)
+    sign_in users(:two)
   end
 
   test 'should like/dislike post' do
+    post post_likes_path(@post)
+
+    assert @post.likes.count == 1
+
     post_like = Post::Like.find_by! post_id: @post.id
     assert @post.likes.last.id == post_like.id
 

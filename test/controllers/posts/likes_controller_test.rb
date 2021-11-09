@@ -11,8 +11,6 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should like/dislike post' do
-    post post_likes_path(@post)
-
     post_like = Post::Like.find_by! post_id: @post.id
     assert @post.likes.last.id == post_like.id
 

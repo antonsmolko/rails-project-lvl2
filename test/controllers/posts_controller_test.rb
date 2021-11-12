@@ -28,7 +28,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create post' do # FIXME: fails with user_id
+  test 'should create post' do
     post posts_url, params: { post: @attrs }
 
     post = Post.last

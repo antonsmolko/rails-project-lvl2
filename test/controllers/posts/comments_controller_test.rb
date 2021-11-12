@@ -20,7 +20,7 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
     post post_comments_path(@post), params: { post_comment: @attrs.merge(parent_id: nil) }
 
     post_comment = PostComment.find_by! content: @attrs[:content]
-    assert @post.post_comments.last.id == post_comment.id
+    assert @post.comments.last.id == post_comment.id
   end
 
   test 'should create post_comment for parent' do

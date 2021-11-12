@@ -1,6 +1,6 @@
 .d-flex.align-items-center
   span.me-2.text-secondary
-    = @post.post_likes.size
+    = @post.likes.size
   - if user_signed_in?
     - @post_like = current_user.post_likes.find_by(post_id: @post.id)
     - if @post_like

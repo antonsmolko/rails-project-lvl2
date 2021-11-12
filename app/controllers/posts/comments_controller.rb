@@ -12,7 +12,7 @@ class Posts::CommentsController < Posts::ApplicationController
 
     # redirect_back(fallback_location: root_path, notice: 'Comment was successfully created.')
 
-    @comment = post.post_comments.build(comment_params)
+    @comment = post.comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save

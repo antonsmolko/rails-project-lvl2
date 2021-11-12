@@ -13,13 +13,13 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   test 'should like/dislike post' do
     post post_likes_path(@post)
 
-    assert @post.post_likes.count == 1
+    assert @post.likes.count == 1
 
     post_like = PostLike.find_by! post_id: @post.id
-    assert @post.post_likes.last.id == post_like.id
+    assert @post.likes.last.id == post_like.id
 
     delete post_like_path @post, post_like
 
-    assert_empty @post.post_likes
+    assert_empty @post.likes
   end
 end

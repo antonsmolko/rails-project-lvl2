@@ -10,14 +10,14 @@
 require 'faker'
 
 post_categories = %w[Education Gadgets Health Nature Science Sports Travel]
-post_categories.each { |category| Post::Category.create(name: category) }
+post_categories.each { |category| PostCategory.create(name: category) }
 user = User.create(email: 'asmolko@yandex.ru', password: 'nnnnnnn')
 
 10.times do
   Post.create(
     title: Faker::Movies::VForVendetta.character,
     body: Faker::Lorem.paragraph(sentence_count: 5),
-    category_id: Post::Category.all.sample.id,
+    category_id: PostCategory.all.sample.id,
     creator_id: user.id
   )
 end

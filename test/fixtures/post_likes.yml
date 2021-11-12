@@ -4,16 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  user: one
-  post: one
+post_like_one:
+  user: user_one
+  post: post_one
 # column: value
 #
-two:
-  user: two
-  post: two
+post_like_two:
+  user: user_two
+  post: post_two
 
-three:
-  user: two
-  post: one
+post_like_three:
+  user: user_two
+  post: post_one
 # column: value

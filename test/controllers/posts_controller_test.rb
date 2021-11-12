@@ -6,16 +6,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @post = posts(:one)
+    @post = posts(:post_one)
 
     @attrs = {
       title: Faker::Movies::VForVendetta.character,
       body: Faker::Movies::VForVendetta.speech,
-      category_id: 1,
+      post_category_id: 1,
       creator_id: 2
     }
 
-    sign_in users(:one)
+    sign_in users(:user_one)
   end
 
   test 'should get index' do
@@ -28,7 +28,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create post' do
+  test 'should create post' do # FIXME: fails with user_id
     post posts_url, params: { post: @attrs }
 
     post = Post.find_by! title: @attrs[:title]

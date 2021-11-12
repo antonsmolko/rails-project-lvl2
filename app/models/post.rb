@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  belongs_to :category, class_name: 'Post::Category'
+  belongs_to :post_category
   belongs_to :creator, class_name: 'User'
-  has_many :comments, class_name: 'Post::Comment', dependent: :destroy
-  has_many :likes, class_name: 'Post::Like', dependent: :destroy
-  has_many :users_who_liked, through: :likes, source: :user
+  has_many :post_comments, dependent: :destroy
+  has_many :post_likes, dependent: :destroy
+  has_many :users_who_liked, through: :post_likes, source: :user
 
-  validates :title, :body, :category, :creator, presence: true
+  validates :title, :body, :post_category, :creator, presence: true
 end

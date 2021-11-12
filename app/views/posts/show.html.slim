@@ -2,7 +2,7 @@ nav[aria-label="breadcrumb"]
   ol.breadcrumb
     li.breadcrumb-item
       = link_to 'All posts', root_path
-    li.breadcrumb-item.active[aria-current="page"]= @post.category.name
+    li.breadcrumb-item.active[aria-current="page"]= @post.post_category&.name
 
 .mb-5
   h1.mb-2= @post.title
@@ -11,7 +11,7 @@ div= @post.body
 
 .d-flex.justify-content-between.mt-5
   div
-    span.lead.me-2= @post.creator.email
+    span.lead.me-2= @post.creator&.email
     span= distance_of_time_in_words(@post.created_at, Time.now)
   = render 'posts/like_counter'
 hr
@@ -20,7 +20,7 @@ hr
   = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: nil
 
 .row.gap-3.mt-5
-  - @post.comments.roots.each do |post_comment|
+  - @post.post_comments.roots.each do |post_comment|
     .col-12: .card
       .card-header= post_comment.user.email
       .card-body

@@ -1,8 +1,8 @@
 .d-flex.align-items-center
   span.me-2.text-secondary
-    = @post.likes.size
+    = @post.post_likes.size
   - if user_signed_in?
-    - @post_like = current_user.likes.find_by(post_id: @post.id)
+    - @post_like = current_user.post_likes.find_by(post_id: @post.id)
     - if @post_like
       = link_to like_path(@post_like), method: :delete, class: 'link-secondary' do
         i.fas.fa-thumbs-up

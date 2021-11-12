@@ -7,14 +7,14 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post_categories = Post::Category.all
+    @post_categories = PostCategory.all
   end
 
   def create
-    @post = Post.new(post_params.merge(creator_id: current_user.id))
+    @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to root_path
     else
       render :new
     end
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_comment = Post::Comment.new
+    @post_comment = PostComment.new
   end
 
   def edit
@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category_id, :title, :body, :summary, :published)
+    params.require(:post).permit(:post_category_id, :title, :body, :summary, :published)
   end
 end

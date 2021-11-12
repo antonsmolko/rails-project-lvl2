@@ -12,7 +12,7 @@ class Posts::CommentsController < Posts::ApplicationController
 
     # redirect_back(fallback_location: root_path, notice: 'Comment was successfully created.')
 
-    @comment = post.post_comments.build(comments_params)
+    @comment = post.post_comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save
@@ -25,7 +25,7 @@ class Posts::CommentsController < Posts::ApplicationController
 
   private
 
-  def comments_params
+  def comment_params
     params.require(:post_comment).permit(:content, :parent_id)
   end
 

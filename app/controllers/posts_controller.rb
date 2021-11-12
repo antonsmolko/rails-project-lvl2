@@ -11,10 +11,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = Post.new(post_params.merge(creator_id: current_user.id))
 
-    if @post.save
-      redirect_to root_path
+    if @post.save!
+      redirect_to root_path, notice: 'Post was successfully created.'
     else
       render :new
     end
@@ -23,21 +23,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  def update
-    @post = Post.find(params[:id])
-
-    if @post.update(post_params)
-      redirect_path = request.method == 'PUT' ? posts_path : post_path(@post)
-      redirect_to redirect_path, notice: 'Post was successfully updated.'
-    elsif request.method == 'POST'
-      render :edit
-    end
   end
 
   def destroy

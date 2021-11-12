@@ -31,35 +31,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should create post' do # FIXME: fails with user_id
     post posts_url, params: { post: @attrs }
 
-    post = Post.find_by! title: @attrs[:title]
+    post = Post.last
 
-    assert_redirected_to post_url(post)
+    assert_equal post.title, @attrs[:title]
+    assert_equal post.body, @attrs[:body]
+
+    assert_redirected_to root_path
   end
 
   test 'should show post' do
     get post_url(@post)
     assert_response :success
-  end
-
-  test 'should get edit' do
-    get edit_post_url(@post)
-    assert_response :success
-  end
-
-  test 'should update post' do
-    patch post_url(@post), params: { post: @attrs }
-    assert_redirected_to post_url(@post)
-
-    @post.reload
-
-    assert_equal @post.title, @attrs[:title]
-  end
-
-  test 'should destroy post' do
-    delete post_url(@post)
-
-    assert_not Post.exists?(@post.id)
-
-    assert_redirected_to posts_url
   end
 end

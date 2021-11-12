@@ -18,7 +18,7 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
     post_like = PostLike.find_by! post_id: @post.id
     assert @post.post_likes.last.id == post_like.id
 
-    delete like_path post_like
+    delete post_like_path @post, post_like
 
     assert_empty @post.post_likes
   end

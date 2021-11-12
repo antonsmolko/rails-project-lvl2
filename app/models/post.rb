@@ -7,5 +7,5 @@ class Post < ApplicationRecord
   has_many :post_likes, dependent: :destroy
   has_many :users_who_liked, through: :post_likes, source: :user
 
-  validates :title, :body, :post_category, :creator, presence: true
+  validates :title, :body, :post_category, presence: true
 end

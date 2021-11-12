@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :posts do
     scope module: :posts do
       resources :comments, only: %w[create new], shallow: true
-      resources :likes, only: %w[create destroy], shallow: true
+      resources :likes, only: %w[create destroy]
     end
   end
 end

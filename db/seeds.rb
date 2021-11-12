@@ -17,7 +17,7 @@ user = User.create(email: 'asmolko@yandex.ru', password: 'nnnnnnn')
   Post.create(
     title: Faker::Movies::VForVendetta.character,
     body: Faker::Lorem.paragraph(sentence_count: 5),
-    category_id: PostCategory.all.sample.id,
+    post_category_id: PostCategory.all.sample.id,
     creator_id: user.id
   )
 end

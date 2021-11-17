@@ -6,12 +6,6 @@ class Posts::CommentsController < Posts::ApplicationController
   end
 
   def create
-    # binding.pry rubocop:disable Lint/Debugger
-    # @comment = PostComment.new(comment_params)
-    # @comment.save
-
-    # redirect_back(fallback_location: root_path, notice: 'Comment was successfully created.')
-
     @comment = post.comments.build(comment_params)
     @comment.user = current_user
 

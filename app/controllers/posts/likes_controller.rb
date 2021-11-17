@@ -11,7 +11,7 @@ class Posts::LikesController < Posts::ApplicationController
   end
 
   def destroy
-    @like = post.likes.find(params[:id]) # if fails because there's no :post_id for post method below
+    @like = post.likes.find(params[:id])
     @like.destroy
 
     redirect_to post_path(post, anchor: 'likes-section')

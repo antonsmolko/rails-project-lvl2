@@ -5,14 +5,14 @@ nav[aria-label="breadcrumb"]
     li.breadcrumb-item.active[aria-current="page"]= @post.post_category&.name
 
 .mb-5
-  h1.mb-2= @post.title
+  h1.mb-2 = @post.title
 
-div= @post.body
+div = @post.body
 
 .d-flex.justify-content-between.mt-5
   div
     span.lead.me-2= @post.creator&.email
-    span= distance_of_time_in_words(@post.created_at, Time.now)
+    span = distance_of_time_in_words(@post.created_at, Time.now)
   = render 'posts/like_counter'
 hr
 
@@ -22,7 +22,7 @@ hr
 .row.gap-3.mt-5
   - @post.comments.roots.each do |post_comment|
     .col-12: .card
-      .card-header= post_comment.user.email
+      .card-header = post_comment.user.email
       .card-body
         = post_comment.content
         - if post_comment.has_children?

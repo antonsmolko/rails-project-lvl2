@@ -1,8 +1,8 @@
 hr.my-2
   div[id="comment-#{comment.id}"]
-    span.me-1= comment.user.email
-    span.text-muted= distance_of_time_in_words(comment.created_at, Time.now)
-    p= comment.content
+    span.me-1 = comment.user.email
+    span.text-muted = distance_of_time_in_words(comment.created_at, Time.now)
+    p = comment.content
   hr.my-2
   .mb-1
     a.d-block.small.text-muted.mb-1[data-bs-toggle="collapse" href="#new-post-comment-#{comment.id}"]

@@ -1,5 +1,5 @@
 .d-flex.align-items-center.justify-content-between.mb-5
-  h1= t('.title')
+  h1 = t('.title')
   - if user_signed_in?
     div
       = link_to t('posts.actions.create'), new_post_path, class: 'btn btn-primary'
@@ -7,11 +7,11 @@
 .row.gap-4
   - @posts.each do |post|
     .col-12: .card: .card-body
-      h2.card-title.h-5= post.title
-      .card-text.mb-2= post.body
+      h2.card-title.h-5 = post.title
+      .card-text.mb-2 = post.body
       .row.text-muted
         .col-12.col-sm-auto #{t('actions.liked')}: #{post.likes.size}
-        .col-12.col-sm-auto= distance_of_time_in_words(post.created_at, Time.now)
-        .col-12.col-sm-auto= post.creator&.email
+        .col-12.col-sm-auto = distance_of_time_in_words(post.created_at, Time.now)
+        .col-12.col-sm-auto = post.creator&.email
         .col-12.col-sm-auto.flex-grow-1.text-end
           = link_to t('actions.read_more'), post_path(post), class: 'stretched-link'

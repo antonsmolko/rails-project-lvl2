@@ -4,5 +4,5 @@
   = f.association :post_category
 
   .mt-5
-    = link_to 'Cancel', posts_path, class: 'btn btn-secondary me-1'
-    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to t('actions.cancel'), posts_path, class: 'btn btn-secondary me-1'
+    = f.submit t('actions.save'), class: 'btn btn-primary'

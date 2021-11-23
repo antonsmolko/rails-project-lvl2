@@ -1,7 +1,7 @@
 nav[aria-label="breadcrumb"]
   ol.breadcrumb
     li.breadcrumb-item
-      = link_to 'All posts', root_path
+      = link_to t('posts.actions.all'), root_path
     li.breadcrumb-item.active[aria-current="page"]= @post.post_category&.name
 
 .mb-5
@@ -35,10 +35,10 @@ hr
       hr.my-0
       .m-3
         a.d-block.small.text-muted.mb-1[data-bs-toggle="collapse" href="#new-post-comment-#{post_comment.id}"]
-          | Comment on
+          = t('post_comments.title')
         .collapse[data-bs-target="#new-post-comment-#{post_comment.id}" id="new-post-comment-#{post_comment.id}"]
           - if user_signed_in?
             = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: post_comment.id
           - else
-            | Requires&nbsp;
-            = link_to 'Sign In', new_user_session_path
+            | #{t('post_comments.sign_in_requires')}&nbsp;
+            = link_to t('actions.sign_in'), new_user_session_path

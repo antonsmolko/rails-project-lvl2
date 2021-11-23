@@ -6,13 +6,13 @@ hr.my-2
   hr.my-2
   .mb-1
     a.d-block.small.text-muted.mb-1[data-bs-toggle="collapse" href="#new-post-comment-#{comment.id}"]
-      | Comment on
+      = t('post_comments.title')
     .collapse[data-bs-target="#new-post-comment-#{comment.id}" id="new-post-comment-#{comment.id}"]
       - if user_signed_in?
         = render 'post_comments/form', post_comment: @post_comment, url: post_comments_path(@post), parent_id: comment.id
       - else
-        | Requires&nbsp;
-        = link_to 'Sign In', new_user_session_path
+        | #{t('post_comments.sign_in_requires')}&nbsp;
+        = link_to t('actions.sign_in'), new_user_session_path
     - if user_signed_in? && comment.has_children?
       .ms-4
         - comment.children.each do |children_comment|

@@ -25,16 +25,6 @@ class PostsController < ApplicationController
     @post_comment = PostComment.new
   end
 
-  def destroy
-    @post = Post.find(params[:id])
-
-    if @post.destroy
-      redirect_to posts_path, notice: 'Post was successfully deleted.'
-    else
-      redirect_to post_path(@post)
-    end
-  end
-
   private
 
   def post_params

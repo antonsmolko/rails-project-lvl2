@@ -7,15 +7,15 @@ nav.navbar.navbar-dark.bg-dark.navbar-static-top.navbar-expand-md
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.me-auto
         li.nav-item
-          = link_to 'Posts', root_path, class: 'nav-link'
+          = link_to t('.posts'), root_path, class: 'nav-link'
       ul.nav.navbar-nav.ms-auto
         - if user_signed_in?
           li.nav-item
-            = link_to 'Create post', new_post_path, class: 'nav-link'
+            = link_to t('.create_post'), new_post_path, class: 'nav-link'
           li.nav-item
-            = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link'
+            = link_to t('actions.sign_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
         - else
           li.nav-item
-            = link_to 'Sign In', new_user_session_path, class: 'nav-link'
+            = link_to t('actions.sign_in'), new_user_session_path, class: 'nav-link'
           li.nav-item
-            = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
+            = link_to t('actions.sign_up'), new_user_registration_path, class: 'nav-link'

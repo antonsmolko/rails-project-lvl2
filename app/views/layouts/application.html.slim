@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      = content_for?(:title) ? yield(:title) : "RailsProjectLvl2"
+      = content_for?(:title) ? yield(:title) : t('.title')
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag

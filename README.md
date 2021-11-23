@@ -5,10 +5,38 @@
 [Demo](https://antonsmolko-rails-project-lvl2.herokuapp.com)
 
 ## Installation
-    $ bundle
-    $ yarn install
-    $ rails db:migrate
-    $ rails db:seed
+    $ make prepare
+    $ make setup
+    $ make start
 
 ## Usage
-    $ rails s
+    // testing
+    $ make test for testing
+
+    // rubocop lint and tesing
+    $ make check
+
+    // fixtures load
+    $ make fixtures-load
+
+    // drop db
+    $ make clean
+    
+    // reset db
+    $ make db-reset
+
+    // rubocop lint
+    $ make lint
+
+    // rubocop -A
+    $ make linter-fix
+
+    // deploy on heroku
+    $ make deploy
+
+    // start heroku console
+    $ make heroku-console
+
+    // output heroku logs
+    $ make heroku-logs
+    

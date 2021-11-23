@@ -29,14 +29,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create post' do
-    post posts_url, params: { post: @attrs }
+    post posts_path, params: { post: @attrs }
+    assert_response :redirect
 
-    post = Post.last
-
-    assert_equal post.title, @attrs[:title]
-    assert_equal post.body, @attrs[:body]
-
-    assert_redirected_to root_path
+    assert { Post.find_by(title: @attrs[:title]) }
   end
 
   test 'should show post' do

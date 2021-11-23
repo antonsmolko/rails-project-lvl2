@@ -30,4 +30,36 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: Rails Project Lvl 2
+    shared:
+      nav:
+        posts: Posts
+        create_post: Create post
+  posts:
+    index:
+      title: Collective blog
+    new:
+      title: New Post
+    actions:
+      create: Create post
+      all: All posts
+  post_comments:
+    title: Comment on
+    sign_in_requires: Requires
+    label: Comment
+    actions:
+      create: Create commen
+  actions:
+    cancel: Cancel
+    save: Save
+    liked: Liked
+    read_more: Read more
+    sign_in: Sign In
+    sign_out: Sign Out
+    sign_up: Sign Up
+  flash:
+    post_comments:
+      create:
+        alert: Comment not be empty

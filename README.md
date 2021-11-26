@@ -4,6 +4,8 @@
 
 [Demo](https://antonsmolko-rails-project-lvl2.herokuapp.com)
 
+Works with Ruby 3.0.3, Node 16.1.0
+
 ## Installation
     $ make prepare
     $ make setup

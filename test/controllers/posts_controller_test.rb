@@ -12,7 +12,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       title: Faker::Movies::VForVendetta.character,
       body: Faker::Movies::VForVendetta.speech,
       post_category_id: 1,
-      creator_id: 2
+      creator_id: 1
     }
 
     sign_in users(:user_one)
@@ -32,11 +32,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post posts_path, params: { post: @attrs }
     assert_response :redirect
 
-    assert { Post.find_by(title: @attrs[:title]) }
+    assert { Post.find_by @attrs }
   end
 
   test 'should show post' do
-    get post_url(@post)
+    get post_url @post
     assert_response :success
   end
 end
